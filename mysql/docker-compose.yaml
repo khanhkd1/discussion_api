@@ -9,6 +9,6 @@ services:
       MYSQL_PASSWORD: abcd@1234
       MYSQL_DATABASE: discussion
     volumes:
-      - ../mysql/discussion.sql:/docker-entrypoint-initdb.d/discussion.sql
+      - ../data/discussion.sql:/docker-entrypoint-initdb.d/discussion.sql
     ports:
       - "3307:3306"
