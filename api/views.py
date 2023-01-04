@@ -4,6 +4,7 @@ from rest_framework import status
 from rest_framework.pagination import LimitOffsetPagination
 from django.db.models import Count
 from api.models import Article, Comment
+from api.paginators import CustomPagination
 from api.serializers import (
     ArticleGetSerializer, 
     ArticlePostSerializer, 
@@ -12,10 +13,34 @@ from api.serializers import (
 )
 
 
-class ArticleApiView(APIView, LimitOffsetPagination):
+class ArticleApiView(APIView):
+
+    pagination_class = CustomPagination
+
+    @property
+    def paginator(self):
+        """The paginator instance associated with the view, or `None`."""
+        if not hasattr(self, '_paginator'):
+            if self.pagination_class is None:
+                self._paginator = None
+            else:
+                self._paginator = self.pagination_class()
+        return self._paginator
+
+    def paginate_queryset(self, queryset):
+        """Return a single page of results, or `None` if pagination is disabled."""
+        if self.paginator is None:
+            return None
+        return self.paginator.paginate_queryset(queryset, self.request, view=self)
+
+    def get_paginated_response(self, data):
+        """Return a paginated style `Response` object for the given output data."""
+        assert self.paginator is not None
+        return self.paginator.get_paginated_response(data)
+
     def get(self, request, *args, **kwargs):
-        articles = Article.objects.all()
-        results = self.paginate_queryset(articles, request, view=self)
+        articles = Article.objects.all().order_by('id')
+        results = self.paginator.paginate_queryset(articles, request, view=self)
         serializer = ArticleGetSerializer(results, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -33,9 +58,33 @@ class ArticleApiView(APIView, LimitOffsetPagination):
 
 
 class CommentApiView(APIView, LimitOffsetPagination):
+
+    pagination_class = CustomPagination
+
+    @property
+    def paginator(self):
+        """The paginator instance associated with the view, or `None`."""
+        if not hasattr(self, '_paginator'):
+            if self.pagination_class is None:
+                self._paginator = None
+            else:
+                self._paginator = self.pagination_class()
+        return self._paginator
+
+    def paginate_queryset(self, queryset):
+        """Return a single page of results, or `None` if pagination is disabled."""
+        if self.paginator is None:
+            return None
+        return self.paginator.paginate_queryset(queryset, self.request, view=self)
+
+    def get_paginated_response(self, data):
+        """Return a paginated style `Response` object for the given output data."""
+        assert self.paginator is not None
+        return self.paginator.get_paginated_response(data)
+
     def get(self, request, *args, **kwargs):
-        comments = Comment.objects.filter(root_comment__isnull=True).order_by('updated')
-        results = self.paginate_queryset(comments, request, view=self)
+        comments = Comment.objects.filter(root_comment__isnull=True).order_by('id')
+        results = self.paginator.paginate_queryset(comments, request, view=self)
         serializer = CommentGetSerializer(results, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
