@@ -41,7 +41,7 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    git clone https://github.com/khnhkd/discussion_api.git
    ```
-2. Check docker ip address and replace database host in config/settings.py
+2. Check Docker IP address and replace database host in config/settings.py
     ```sh
    ip a
    ```
@@ -53,8 +53,8 @@ _Below is an example of how you can instruct your audience on installing and set
     inet6 fe80::42:5fff:fe80:f039/64 scope link 
        valid_lft forever preferred_lft forever
     ```
-    Replace HOST of database in config/settings.py as bellow
-    ```sh
+    Edit HOST's default database in config/settings.py as bellow
+    ```python
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql', 
@@ -77,9 +77,15 @@ _Below is an example of how you can instruct your audience on installing and set
    cd discussion_api
    docker-compose up -d
    ```
-3. Check api 
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+   After done, please check the API availability by access [127.0.0.1](http://127.0.0.1:8000/api/article). If wrong, please restart API container
+   ```sh
+   docker restart api
    ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- USAGE EXAMPLES -->
+## Usage
+  API Routes
+  <ol>
+    <li>[Get all articles](http://127.0.0.1:8000/api/article)</li>
+    <li>[Get article by id](http://127.0.0.1:8000/api/article/1)</li>
+    <li>[Get top 10 articles](http://127.0.0.1:8000/api/article/top10)</li>
+  </ol>

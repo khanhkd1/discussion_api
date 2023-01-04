@@ -6,4 +6,3 @@ class CustomPagination(PageNumberPagination):
     page_size_query_param = 'p_size'
     max_page_size = 100
     page_query_param = 'p'
-
