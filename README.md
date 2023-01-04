@@ -1,9 +1,3 @@
-<!-- # Clone source: https://github.com/khnhkd/discussion_api.git
-# Unzip data/discussion.zip
-# Install docker, docker-compose
-# cd discussion_api
-# docker-compose build && docker up -d -->
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -22,15 +16,11 @@
 
 <!-- GETTING STARTED -->
 ## Getting Started
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 Docker and Docker Compose are required, check the [Documentation](https://docs.docker.com/compose/install/).
 
 ### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
 1. Clone the repo
    ```sh
