@@ -1,33 +1,12 @@
 version: "2.2"
 services:
-  db:
-    container_name: db
-    image: mysql:8.0.31
-    environment:
-      MYSQL_ROOT_PASSWORD: abcd@1234
-      MYSQL_USER: khanhkd
-      MYSQL_PASSWORD: abcd@1234
-      MYSQL_DATABASE: discussion
-    volumes:
-      - ./data/discussion.sql:/docker-entrypoint-initdb.d/discussion.sql
-    networks:
-      - api-net
-
   api:
     container_name: api
     command: python manage.py runserver 0.0.0.0:8000
     build:
       context: ./
       dockerfile: Dockerfile
-    depends_on:
-      - db
     volumes:
       - .:/code
     ports:
       - "8000:8000"
-    networks:
-      - api-net
-
-networks:
-  api-net:
-    driver: bridge

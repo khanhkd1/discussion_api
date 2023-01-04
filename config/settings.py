@@ -81,8 +81,8 @@ DATABASES = {
         'NAME': 'discussion',
         'USER': 'khanhkd',
         'PASSWORD': 'abcd@1234',
-        'HOST': 'db',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+        'HOST': '172.17.0.1',   # Or an IP Address that your DB is hosted on
+        'PORT': '3307',
     }
 }
 

@@ -1,0 +1,14 @@
+version: "2.2"
+services:
+  db:
+    container_name: db
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: abcd@1234
+      MYSQL_USER: khanhkd
+      MYSQL_PASSWORD: abcd@1234
+      MYSQL_DATABASE: discussion
+    volumes:
+      - ../mysql/discussion.sql:/docker-entrypoint-initdb.d/discussion.sql
+    ports:
+      - "3307:3306"

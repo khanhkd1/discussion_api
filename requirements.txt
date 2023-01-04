@@ -1,5 +1,5 @@
 django
 djangorestframework
 # conda install -c conda-forge mysqlclient
-mysql-connector-python
+# mysql-connector-python
 mysqlclient
