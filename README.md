@@ -41,7 +41,7 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    git clone https://github.com/khnhkd/discussion_api.git
    ```
-2. Check docker ip address and replace database host in config.settings.py
+2. Check docker ip address and replace database host in config/settings.py
     ```sh
    ip a
    ```
@@ -53,14 +53,28 @@ _Below is an example of how you can instruct your audience on installing and set
     inet6 fe80::42:5fff:fe80:f039/64 scope link 
        valid_lft forever preferred_lft forever
     ```
-2. Build docker-compose
+    Replace HOST of database in config/settings.py as bellow
+    ```sh
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql', 
+            'NAME': 'discussion',
+            'USER': 'khanhkd',
+            'PASSWORD': 'abcd@1234',
+            'HOST': '172.17.0.1',   # Or an IP Address that your DB is hosted on
+            'PORT': '3307',
+        },
+    }
+    ```
+3. Build docker-compose
+    Database MySQL
+   ```sh
+   cd discussion_api/mysql
+   docker-compose up -d
+   ```
+    Backend API Django
    ```sh
    cd discussion_api
-   // database mysql
-   cd mysql
-   docker-compose up -d
-   // api django
-   cd ..
    docker-compose up -d
    ```
 3. Check api 
