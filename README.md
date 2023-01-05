@@ -210,7 +210,8 @@ Docker and Docker Compose are required, check the [Documentation](https://docs.d
                   "root_comment_id": 152758,
                   "created": "2023-01-02T18:57:14.554299Z",
                   "updated": "2023-01-02T18:57:14.554302Z"
-                }
+                },
+                ...
               ]
         }, 
         ...
@@ -219,9 +220,3 @@ Docker and Docker Compose are required, check the [Documentation](https://docs.d
     ...
   ]
   ```
-
-  <!-- <ol>
-    <li>[Get all articles](http://127.0.0.1:8000/api/article)</li>
-    <li>[Get article by id](http://127.0.0.1:8000/api/article/1)</li>
-    <li>[Get top 10 articles](http://127.0.0.1:8000/api/article/top10)</li>
-  </ol> -->
