@@ -86,7 +86,7 @@ Docker and Docker Compose are required, check the [Documentation](https://docs.d
   GET /api/article?p=1&p_size=2
   ```
   | Parameter | Type | Description |
-  <!-- | :--- | :--- | :--- | -->
+  | :--- | :--- | :--- |
   | `p` | `int` | The page number (default 1) |
   | :--- | :--- | :--- |
   | `p_size` | `int` | The record number per page (defaul 10) |
