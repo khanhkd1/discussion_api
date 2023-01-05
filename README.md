@@ -105,7 +105,7 @@ Docker and Docker Compose are required, check the [Documentation](https://docs.d
                 "content": "comment 1",
                 "author": "user 11",
                 "article": 1,
-                "root_comment": null,
+                "created": "2023-01-02T18:39:45.376484Z",
                 "updated": "2023-01-02T18:39:45.376484Z",
                 "all_replies": []
             },
@@ -114,15 +114,14 @@ Docker and Docker Compose are required, check the [Documentation](https://docs.d
                 "content": "comment 2",
                 "author": "user 16",
                 "article": 1,
-                "root_comment": null,
+                "created": "2023-01-02T18:39:45.383390Z",
                 "updated": "2023-01-02T18:39:45.383390Z",
                 "all_replies": [
                     {
                         "id": 3,
                         "content": "reply 1",
                         "author": "user 14",
-                        "article_id": 1,
-                        "root_comment_id": 2,
+                        "root_comment": 2,
                         "created": "2023-01-02T18:39:45.392115Z",
                         "updated": "2023-01-02T18:39:45.392117Z"
                     }
@@ -153,7 +152,7 @@ Docker and Docker Compose are required, check the [Documentation](https://docs.d
             "content": "comment 1",
             "author": "user 11",
             "article": 1,
-            "root_comment": null,
+            "created": "2023-01-02T18:39:45.376484Z",
             "updated": "2023-01-02T18:39:45.376484Z",
             "all_replies": []
         },
@@ -162,15 +161,14 @@ Docker and Docker Compose are required, check the [Documentation](https://docs.d
             "content": "comment 2",
             "author": "user 16",
             "article": 1,
-            "root_comment": null,
+            "created": "2023-01-02T18:39:45.383390Z",
             "updated": "2023-01-02T18:39:45.383390Z",
             "all_replies": [
                 {
                     "id": 3,
                     "content": "reply 1",
                     "author": "user 14",
-                    "article_id": 1,
-                    "root_comment_id": 2,
+                    "root_comment": 2,
                     "created": "2023-01-02T18:39:45.392115Z",
                     "updated": "2023-01-02T18:39:45.392117Z"
                 }
@@ -199,15 +197,14 @@ Docker and Docker Compose are required, check the [Documentation](https://docs.d
               "content": "comment 1",
               "author": "user 20",
               "article": 13947,
-              "root_comment": null,
+              "created": "2023-01-02T18:57:14.547483Z",
               "updated": "2023-01-02T18:57:14.547483Z",
               "all_replies": [
                 {
                   "id": 152759,
                   "content": "reply 1",
                   "author": "user 16",
-                  "article_id": 13947,
-                  "root_comment_id": 152758,
+                  "root_comment": 152758,
                   "created": "2023-01-02T18:57:14.554299Z",
                   "updated": "2023-01-02T18:57:14.554302Z"
                 },

@@ -21,15 +21,13 @@ class GetAllArticlesTest(TestCase):
         article = Article.objects.create(content='Article 1', author='User 1')
         comment = Comment.objects.create(content="Comment 1", author="User 2", article=article)
         Comment.objects.create(content="Reply 1", author="User 1", article=article, root_comment=comment)
-        Article.objects.create(content='Article 2', author='User 2')
-        Article.objects.create(content='Article 3', author='User 1')
-        Article.objects.create(content='Article 4', author='User 3')
+        Comment.objects.create(content="Reply 2", author="User 3", article=article, root_comment=comment)
 
     def test_get_all_articles(self):
         # get API response
         response = client.get(reverse('get_post_articles'))
         # get data from db
-        articles = Article.objects.all()
+        articles = Article.objects.all().order_by('id')
         serializer = ArticleGetSerializer(articles, many=True)
         self.assertEqual(response.data, serializer.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)

@@ -23,9 +23,18 @@ class Article(models.Model):
         comments = []
         for comment_queryset in comments_queryset:
             replies = comment_queryset.all_replies()
-            comment = model_to_dict(comment_queryset)
-            comment['all_replies'] = replies
-            comments.append(comment)
+            # comment = model_to_dict(comment_queryset, fields=['id', 'content', 'author', 'article', 'created', 'updated'])
+            # comment['all_replies'] = replies
+            # comments.append(comment)
+            comments.append({
+                'id': comment_queryset.id,
+                'content': comment_queryset.content,
+                'author': comment_queryset.author,
+                'article': comment_queryset.article_id,
+                'created': comment_queryset.created,
+                'updated': comment_queryset.updated,
+                'all_replies': replies,
+            })
         return comments
 
     class Meta:
@@ -53,7 +62,8 @@ class Comment(models.Model):
         return super(Comment, self).save(*args, **kwargs)
     
     def all_replies(self):
-        return Comment.objects.filter(root_comment=self.id).values()
+        # return Comment.objects.filter(root_comment=self.id).values()
+        return Comment.objects.filter(root_comment=self.id).values('id', 'content', 'author', 'root_comment', 'created', 'updated')
 
     class Meta:
         db_table = 'comment'
