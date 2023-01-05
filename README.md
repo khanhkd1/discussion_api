@@ -133,6 +133,93 @@ Docker and Docker Compose are required, check the [Documentation](https://docs.d
     ...
   ]
   ```
+  
+2. Get an article by id
+  ```http
+  GET /api/article/<article_id>
+  ```
+
+  Responses
+  ```json
+  {
+    "id": 1,
+    "author": "user 1",
+    "content": "article 1",
+    "created": "2023-01-02T18:39:45.367907Z",
+    "updated": "2023-01-02T18:39:45.367911Z",
+    "all_comments": [
+        {
+            "id": 1,
+            "content": "comment 1",
+            "author": "user 11",
+            "article": 1,
+            "root_comment": null,
+            "updated": "2023-01-02T18:39:45.376484Z",
+            "all_replies": []
+        },
+        {
+            "id": 2,
+            "content": "comment 2",
+            "author": "user 16",
+            "article": 1,
+            "root_comment": null,
+            "updated": "2023-01-02T18:39:45.383390Z",
+            "all_replies": [
+                {
+                    "id": 3,
+                    "content": "reply 1",
+                    "author": "user 14",
+                    "article_id": 1,
+                    "root_comment_id": 2,
+                    "created": "2023-01-02T18:39:45.392115Z",
+                    "updated": "2023-01-02T18:39:45.392117Z"
+                }
+            ]
+        }
+    ]
+  }
+  ```
+
+3. Get top 10 articles (have most comments)
+  ```http
+  GET /api/article/top10
+  ```
+
+  ```json
+  [
+    {
+      "id": 13947,
+      "author": "user 15",
+      "content": "article 13947",
+      "created": "2023-01-02T18:57:14.540903Z",
+      "updated": "2023-01-02T18:57:14.540906Z",
+      "all_comments": [
+        {
+          "id": 152758,
+              "content": "comment 1",
+              "author": "user 20",
+              "article": 13947,
+              "root_comment": null,
+              "updated": "2023-01-02T18:57:14.547483Z",
+              "all_replies": [
+                {
+                  "id": 152759,
+                  "content": "reply 1",
+                  "author": "user 16",
+                  "article_id": 13947,
+                  "root_comment_id": 152758,
+                  "created": "2023-01-02T18:57:14.554299Z",
+                  "updated": "2023-01-02T18:57:14.554302Z"
+                }
+              ]
+        }, 
+        ...
+      ]
+    },
+    ...
+  ]
+  ```
+
   <!-- <ol>
     <li>[Get all articles](http://127.0.0.1:8000/api/article)</li>
     <li>[Get article by id](http://127.0.0.1:8000/api/article/1)</li>
